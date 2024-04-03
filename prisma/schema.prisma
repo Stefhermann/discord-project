@@ -36,6 +36,12 @@ model Server {
   @@index([profileId])
 }
 
+enum MemberRole {
+  ADMIN
+  MODERATOR
+  GUEST
+}
+
 model Member {
   id        String     @id @default(uuid())
   role      MemberRole @default(GUEST)
@@ -63,12 +69,6 @@ model Channel {
 
   @@index([profileId])
   @@index([serverId])
-}
-
-enum MemberRole {
-  ADMIN
-  MODERATOR
-  GUEST
 }
 
 enum ChannelType {
